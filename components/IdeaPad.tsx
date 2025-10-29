@@ -22,20 +22,20 @@ export const IdeaPad: React.FC<IdeaPadProps> = ({ subjects, onConvertToTasks, is
   const hasSubjects = subjects.length > 0;
 
   return (
-    <div className="bg-white/50 p-6 rounded-xl shadow-lg h-full flex flex-col">
-      <h2 className="text-2xl font-bold text-calm-text mb-4">Idea Pad</h2>
+    <div className="bg-white/50 dark:bg-dark-surface/50 p-6 rounded-xl shadow-lg flex flex-col">
+      <h2 className="text-2xl font-bold text-calm-text dark:text-dark-text mb-4">Idea Pad</h2>
       <textarea
         value={ideaText}
         onChange={(e) => setIdeaText(e.target.value)}
         placeholder={hasSubjects ? "Capture your brilliant ideas here..." : "Create a subject first to capture ideas."}
-        className="flex-grow w-full p-4 border border-calm-border rounded-lg focus:ring-2 focus:ring-calm-accent focus:outline-none transition resize-none placeholder:text-calm-subtle focus:bg-calm-text focus:text-white focus:placeholder:text-gray-400"
+        className="w-full p-4 border border-calm-border dark:border-dark-border rounded-lg focus:ring-2 focus:ring-calm-accent focus:outline-none transition resize-none placeholder:text-calm-subtle dark:placeholder:text-dark-subtle bg-white dark:bg-dark-bg min-h-[12rem]"
         disabled={!hasSubjects}
       />
       {hasSubjects && (
         <select
           value={selectedSubjectId}
           onChange={(e) => setSelectedSubjectId(e.target.value)}
-          className="mt-4 w-full p-3 border border-calm-border rounded-lg bg-white focus:ring-2 focus:ring-calm-accent focus:outline-none"
+          className="mt-4 w-full p-3 border border-calm-border dark:border-dark-border rounded-lg bg-white dark:bg-dark-bg focus:ring-2 focus:ring-calm-accent focus:outline-none"
         >
           {subjects.map(subject => (
             <option key={subject.id} value={subject.id}>

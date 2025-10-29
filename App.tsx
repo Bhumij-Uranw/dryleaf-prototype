@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useLocalStorage } from './hooks/useLocalStorage';
 import { Task, Subject, Settings } from './types';
-import { Sidebar } from './components/Sidebar';
 import { TaskList } from './components/TaskList';
 import { AddSubjectModal } from './components/AddSubjectModal';
 import { FlowMode } from './components/FlowMode';
@@ -147,21 +146,23 @@ const App: React.FC = () => {
 
 
   const HomeView = () => (
-    <div className="space-y-8">
-      <PieChart tasks={tasks} subjects={subjects} />
-      <div className="grid grid-cols-1 gap-8">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <div className="space-y-8">
+        <PieChart tasks={tasks} subjects={subjects} />
         <UpcomingDeadlines tasks={tasks} subjects={subjects} />
+      </div>
+      <div className="space-y-8">
+        <IdeaPad
+          subjects={subjects}
+          onConvertToTasks={handleConvertToTasks}
+          isLoadingAi={isLoadingAi}
+        />
         <FocusAssistant
           message={encouragement}
           onGetEncouragement={handleGetEncouragement}
           isLoadingAi={isLoadingAi}
         />
       </div>
-       <IdeaPad
-          subjects={subjects}
-          onConvertToTasks={handleConvertToTasks}
-          isLoadingAi={isLoadingAi}
-        />
     </div>
   );
   
@@ -197,15 +198,8 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="flex h-screen bg-calm-bg text-calm-text dark:bg-dark-bg dark:text-dark-text font-sans">
-      <Sidebar 
-        subjects={subjects}
-        onAddSubject={() => setIsAddSubjectModalOpen(true)}
-        onSelectView={setView}
-        activeView={view}
-        onOpenSettings={() => setIsSettingsModalOpen(true)}
-      />
-      <main className="flex-1 p-4 md:p-8 overflow-y-auto pb-24 md:pb-8">
+    <div className="min-h-screen bg-calm-bg text-calm-text dark:bg-dark-bg dark:text-dark-text font-sans">
+      <main className="p-4 sm:p-6 md:p-8 pb-24 overflow-y-auto">
         {renderContent()}
       </main>
       <BottomNav

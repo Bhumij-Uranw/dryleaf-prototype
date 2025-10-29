@@ -33,7 +33,7 @@ const NavButton: React.FC<{
 
 export const BottomNav: React.FC<BottomNavProps> = ({ activeView, onSelectView, onAddSubject, onOpenSettings }) => {
     return (
-        <nav className="md:hidden fixed bottom-0 left-0 right-0 h-16 bg-white/80 dark:bg-dark-surface/80 backdrop-blur-md border-t border-calm-border dark:border-dark-border flex items-center justify-around z-40">
+        <nav className="fixed bottom-0 left-0 right-0 h-16 bg-white/80 dark:bg-dark-surface/80 backdrop-blur-md border-t border-calm-border dark:border-dark-border flex items-center justify-around z-40">
             <NavButton
                 isActive={activeView.type === 'home'}
                 onClick={() => onSelectView({ type: 'home' })}

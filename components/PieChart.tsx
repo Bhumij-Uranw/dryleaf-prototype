@@ -11,9 +11,9 @@ const COLORS = ['#10B981', '#3B82F6', '#F97316', '#8B5CF6', '#EC4899', '#F59E0B'
 export const PieChart: React.FC<PieChartProps> = ({ tasks, subjects }) => {
   if (subjects.length === 0 || tasks.length === 0) {
     return (
-      <div className="bg-white/50 p-6 rounded-xl shadow-lg h-full flex flex-col">
-        <h2 className="text-2xl font-bold text-calm-text mb-4">Progress Overview</h2>
-        <div className="flex-grow flex items-center justify-center text-calm-subtle">
+      <div className="bg-white/50 dark:bg-dark-surface/50 p-6 rounded-xl shadow-lg flex flex-col">
+        <h2 className="text-2xl font-bold text-calm-text dark:text-dark-text mb-4">Progress Overview</h2>
+        <div className="flex-grow flex items-center justify-center text-calm-subtle dark:text-dark-subtle">
           <p>No tasks or subjects yet. Add a subject and some tasks to see your progress!</p>
         </div>
       </div>
@@ -37,9 +37,9 @@ export const PieChart: React.FC<PieChartProps> = ({ tasks, subjects }) => {
   
   if (totalTasks === 0) {
     return (
-        <div className="bg-white/50 p-6 rounded-xl shadow-lg h-full flex flex-col">
-          <h2 className="text-2xl font-bold text-calm-text mb-4">Progress Overview</h2>
-          <div className="flex-grow flex items-center justify-center text-calm-subtle">
+        <div className="bg-white/50 dark:bg-dark-surface/50 p-6 rounded-xl shadow-lg flex flex-col">
+          <h2 className="text-2xl font-bold text-calm-text dark:text-dark-text mb-4">Progress Overview</h2>
+          <div className="flex-grow flex items-center justify-center text-calm-subtle dark:text-dark-subtle">
             <p>Add some tasks to your subjects to see your progress chart.</p>
           </div>
         </div>
@@ -56,9 +56,9 @@ export const PieChart: React.FC<PieChartProps> = ({ tasks, subjects }) => {
   const conicGradient = `conic-gradient(${gradientParts.join(', ')})`;
 
   return (
-    <div className="bg-white/50 p-6 rounded-xl shadow-lg h-full flex flex-col">
-      <h2 className="text-2xl font-bold text-calm-text mb-4">Progress Overview</h2>
-      <div className="flex-grow flex items-center justify-center sm:justify-start flex-wrap gap-8">
+    <div className="bg-white/50 dark:bg-dark-surface/50 p-6 rounded-xl shadow-lg flex flex-col">
+      <h2 className="text-2xl font-bold text-calm-text dark:text-dark-text mb-4">Progress Overview</h2>
+      <div className="flex items-center justify-center sm:justify-start flex-wrap gap-8">
         <div 
           className="w-48 h-48 rounded-full"
           style={{ background: conicGradient }}
@@ -69,8 +69,8 @@ export const PieChart: React.FC<PieChartProps> = ({ tasks, subjects }) => {
           {subjectData.map(s => (
             <div key={s.id} className="flex items-center">
               <div className="w-4 h-4 rounded-full mr-3" style={{ backgroundColor: s.color }}></div>
-              <span className="font-semibold text-calm-text">{s.name}</span>
-              <span className="ml-auto text-sm text-calm-subtle">{s.completed}/{s.value} completed</span>
+              <span className="font-semibold text-calm-text dark:text-dark-text">{s.name}</span>
+              <span className="ml-auto text-sm text-calm-subtle dark:text-dark-subtle">{s.completed}/{s.value} completed</span>
             </div>
           ))}
         </div>
