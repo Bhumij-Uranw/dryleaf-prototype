@@ -13,3 +13,10 @@ export interface Subject {
   id: string;
   name: string;
 }
+
+export interface Settings {
+  darkMode: boolean;
+  pomodoroDuration: number;
+  shortBreakDuration: number;
+  longBreakDuration: number;
+}
